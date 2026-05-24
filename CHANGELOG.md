@@ -15,3 +15,5 @@ tested perfect,
 now need to take folder and table 
 
 1.4.1, 2 names for tabl
+
+1.4.2, show all tested

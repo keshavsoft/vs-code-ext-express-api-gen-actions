@@ -1,5 +1,5 @@
-import { registerAllCommands as ForEditorTitle } from './ForEditorTitle/registerCommands.js';
+import endpointCommands from './ForEditorTitle/endpointCommands.js';
 
 export function registerAllCommands(context) {
-    ForEditorTitle(context);
+    endpointCommands(context);
 };

@@ -1,5 +1,5 @@
-import { registerAllCommands as appJsFileCommands } from "./appJsFileCommands.js";
+import { registerAllCommands as endpointCommands } from "./endpointCommands.js";
 
 export function registerAllCommands(context) {
-    appJsFileCommands(context);
+    endpointCommands(context);
 };
