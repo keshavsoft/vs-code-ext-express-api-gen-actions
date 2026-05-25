@@ -1,60 +1,165 @@
-# EndPointGen VS Code Extension
+# Express API Gen Actions
 
-## Overview
+A VS Code extension for generating modular Express.js CRUD API action structures automatically.
 
-**EndPointGen** is a Visual Studio Code extension developed by **KeshavSoft** focused on **AI-assisted server-side development using Node.js and Express**.  
-It helps developers quickly generate endpoints, sub-routes, and API structure directly from the Explorer context menu.
+Repository:
 
----
-
-## Demo
-
-![Demo](Docs/Information/demo.gif)
+[vs-code-ext-express-api-gen-actions Repository](https://github.com/keshavsoft/vs-code-ext-express-api-gen-actions?utm_source=chatgpt.com)
 
 ---
 
-## Installation
+# Features
 
-1. Open VS Code  
-2. Go to Extensions  
-3. Search: **EndPointGen**  
-4. Click Install  
-
----
-
-## Features
-
-- Generate Express.js API structure instantly  
-- Create endpoints in `app.js` with minimal effort  
-- Add modular sub-routes in `routes.js`  
-- Inject endpoint logic into `.js` files  
-- Context-aware right-click actions in Explorer  
-- Modular orchestration-based architecture  
+* Generate Express API actions automatically
+* Generate CRUD endpoint structure
+* Create modular backend architecture
+* Auto-create route files
+* Organized controller/service pattern
+* JSON-based backend support
+* Faster API development
+* Reduce boilerplate Express code
 
 ---
 
-## Commands
+# Generated Folder Structure
 
-| Command                  | Title             | Description                                               |
-|--------------------------|-------------------|-----------------------------------------------------------|
-| extension.initJs         | Initiate Node API | Initializes base Express server structure                |
-| extension.createEndpoint | CreateEndpoint    | Creates a new route entry in `app.js`                    |
-| extension.addSubRoute    | AddSubRoute       | Registers sub-route modules in `routes.js`               |
-| extension.addEndPoint    | AddEndPoint       | Injects endpoint logic into selected `.js` file          |
+Example generated structure:
+
+```txt id="jlwm1"
+Api/
+   V1/
+      Journals/
+
+         Alter/
+         Config/
+         Delete/
+         Insert/
+         ShowAll/
+
+         end-points.js
+
+      routes.js
+
+routes.js
+```
 
 ---
 
-## Usage
+# Folder Explanation
 
-- Open your Node.js project in VS Code  
-- Right-click on a file or folder  
-- Select a command from the context menu  
-- Extension generates/updates files automatically  
+| Folder/File     | Purpose                   |
+| --------------- | ------------------------- |
+| `ShowAll`       | Read all records          |
+| `Insert`        | Insert new record         |
+| `Alter`         | Update existing record    |
+| `Delete`        | Delete record             |
+| `Config`        | API configuration         |
+| `end-points.js` | Defines Express endpoints |
+| `routes.js`     | Connects routers          |
 
 ---
 
-## Example
+# CRUD Actions
 
-**Before**
-```js
-// No routes
+The extension generates CRUD API actions automatically.
+
+| Action    | HTTP Method | Purpose         |
+| --------- | ----------- | --------------- |
+| `ShowAll` | GET         | Read all data   |
+| `Insert`  | POST        | Create new data |
+| `Alter`   | PUT/PATCH   | Update data     |
+| `Delete`  | DELETE      | Remove data     |
+
+---
+
+# API Architecture
+
+```txt id="’wini2"
+Browser / Frontend
+        ↓
+Endpoint
+        ↓
+routes.js
+        ↓
+end-points.js
+        ↓
+controller.js
+        ↓
+service.js
+        ↓
+JSON/File Storage
+```
+
+# Generated Endpoints
+
+Final endpoints become:
+
+```txt id="’wini6"
+GET    Api/V1/Journals/ShowAll
+POST   Api/V1/Journals/Insert
+PUT    Api/V1/Journals/Alter
+DELETE Api/V1/Journals/Delete
+```
+
+---
+
+# Example JSON Storage
+
+## Data/Journals.json
+
+```json id="’wini11"
+[
+  {
+    "id": 1,
+    "title": "Daily Entry",
+    "amount": 500
+  },
+  {
+    "id": 2,
+    "title": "Office Expense",
+    "amount": 1200
+  }
+]
+# Benefits
+
+* Faster Express API creation
+* Clean architecture
+* Organized backend structure
+* Reusable API modules
+* Automatic route generation
+* Easier maintenance
+
+---
+
+# Example Workflow
+
+## Generate Journals API
+
+Generated structure:
+
+```txt id="’wini14"
+Api/
+   V1/
+      Journals/
+         ShowAll/
+         Insert/
+         Alter/
+         Delete/
+```
+
+---
+
+# Technologies
+
+* Node.js
+* Express.js
+* Express Router
+* JSON Storage
+* CRUD APIs
+* Modular Backend Architecture
+
+---
+
+# Repository
+
+[vs-code-ext-express-api-gen-actions GitHub Repository](https://github.com/keshavsoft/vs-code-ext-express-api-gen-actions?utm_source=chatgpt.com)
