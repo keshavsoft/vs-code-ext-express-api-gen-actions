@@ -1,0 +1,637 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ShowAll Endpoint Generator Architecture</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Inter,Arial,sans-serif;
+}
+
+body{
+    background:#07111f;
+    color:white;
+    overflow-x:hidden;
+}
+
+.hero{
+    min-height:100vh;
+    background:linear-gradient(135deg,#081221,#10233d,#0e3a52);
+    padding:80px 8%;
+}
+
+.navbar{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:80px;
+}
+
+.logo{
+    font-size:28px;
+    font-weight:800;
+    background:linear-gradient(to right,#00d4ff,#00ffb7);
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+}
+
+.menu{
+    display:flex;
+    gap:18px;
+    flex-wrap:wrap;
+}
+
+.menu span{
+    padding:10px 18px;
+    border-radius:12px;
+    background:rgba(255,255,255,0.05);
+    border:1px solid rgba(255,255,255,0.08);
+    color:#d9e7ff;
+    transition:.3s ease;
+}
+
+.menu span:hover{
+    background:rgba(0,255,200,0.12);
+    border-color:rgba(0,255,200,0.3);
+    transform:translateY(-2px);
+}
+
+.hero-content{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+    gap:50px;
+    align-items:center;
+}
+
+.badge{
+    display:inline-block;
+    padding:10px 18px;
+    border-radius:999px;
+    background:rgba(0,255,200,0.08);
+    border:1px solid rgba(0,255,200,0.2);
+    color:#70ffd8;
+    margin-bottom:25px;
+    letter-spacing:1px;
+}
+
+h1{
+    font-size:68px;
+    line-height:1.1;
+    margin-bottom:25px;
+}
+
+.gradient{
+    background:linear-gradient(to right,#4ef2ff,#00ffb7);
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+}
+
+.hero p{
+    color:#afc3de;
+    line-height:1.9;
+    font-size:18px;
+    margin-bottom:35px;
+}
+
+.btns{
+    display:flex;
+    gap:20px;
+    flex-wrap:wrap;
+}
+
+.btn{
+    text-decoration:none;
+    padding:16px 28px;
+    border-radius:14px;
+    font-weight:700;
+    transition:.3s ease;
+}
+
+.primary{
+    background:linear-gradient(to right,#00d4ff,#00ffb7);
+    color:#05111d;
+}
+
+.primary:hover{
+    transform:translateY(-4px);
+    box-shadow:0 12px 30px rgba(0,255,200,0.25);
+}
+
+.secondary{
+    border:1px solid rgba(255,255,255,0.15);
+    background:rgba(255,255,255,0.05);
+    color:white;
+}
+
+.code-window{
+    background:rgba(255,255,255,0.05);
+    border:1px solid rgba(255,255,255,0.08);
+    border-radius:24px;
+    overflow:hidden;
+    backdrop-filter:blur(12px);
+    box-shadow:0 25px 50px rgba(0,0,0,0.35);
+}
+
+.window-top{
+    padding:16px;
+    display:flex;
+    gap:10px;
+    border-bottom:1px solid rgba(255,255,255,0.08);
+}
+
+.dot{
+    width:12px;
+    height:12px;
+    border-radius:50%;
+}
+
+.red{background:#ff5f57;}
+.yellow{background:#febc2e;}
+.green{background:#28c840;}
+
+.window-body{
+    padding:28px;
+}
+
+pre{
+    line-height:1.8;
+    color:#70ffd8;
+    white-space:pre-wrap;
+    overflow-x:auto;
+}
+
+section{
+    padding:100px 8%;
+}
+
+.title{
+    text-align:center;
+    margin-bottom:70px;
+}
+
+.title h2{
+    font-size:52px;
+    margin-bottom:20px;
+}
+
+.title p{
+    max-width:850px;
+    margin:auto;
+    line-height:1.9;
+    color:#abc1db;
+}
+
+.cards{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+    gap:28px;
+}
+
+.card{
+    background:rgba(255,255,255,0.04);
+    border:1px solid rgba(255,255,255,0.08);
+    border-radius:24px;
+    padding:32px;
+    transition:.3s ease;
+    position:relative;
+    overflow:hidden;
+}
+
+.card::before{
+    content:"";
+    position:absolute;
+    top:0;
+    left:0;
+    width:100%;
+    height:5px;
+    background:linear-gradient(to right,#00d4ff,#00ffb7);
+}
+
+.card:hover{
+    transform:translateY(-8px);
+    box-shadow:0 18px 40px rgba(0,0,0,0.3);
+}
+
+.card h3{
+    margin-bottom:16px;
+    font-size:24px;
+}
+
+.card p{
+    line-height:1.9;
+    color:#b2c5dd;
+}
+
+.process{
+    background:linear-gradient(180deg,#091726,#06101c);
+}
+
+.flow{
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:center;
+    gap:28px;
+    margin-top:60px;
+}
+
+.flow-box{
+    min-width:180px;
+    padding:28px;
+    border-radius:20px;
+    text-align:center;
+    background:rgba(255,255,255,0.04);
+    border:1px solid rgba(255,255,255,0.08);
+    position:relative;
+}
+
+.flow-box h4{
+    margin-bottom:12px;
+    color:#70ffd8;
+}
+
+.flow-box p{
+    color:#b0c4db;
+    line-height:1.7;
+    font-size:14px;
+}
+
+.architecture{
+    margin-top:80px;
+}
+
+.architecture-box{
+    background:rgba(255,255,255,0.04);
+    border:1px solid rgba(255,255,255,0.08);
+    border-radius:24px;
+    padding:40px;
+}
+
+.endpoint{
+    margin-top:40px;
+    background:#04111d;
+    border:1px solid rgba(0,255,200,0.15);
+    border-radius:20px;
+    padding:22px;
+    color:#70ffd8;
+    overflow-x:auto;
+}
+
+.command-list{
+    display:flex;
+    justify-content:center;
+    gap:14px;
+    flex-wrap:wrap;
+    margin-top:40px;
+}
+
+.command-list div{
+    padding:14px 22px;
+    border-radius:14px;
+    background:rgba(255,255,255,0.04);
+    border:1px solid rgba(255,255,255,0.08);
+}
+
+footer{
+    padding:40px;
+    text-align:center;
+    color:#8ca4bf;
+}
+
+@media(max-width:768px){
+    h1{
+        font-size:48px;
+    }
+
+    .title h2{
+        font-size:38px;
+    }
+}
+</style>
+</head>
+<body>
+
+<section class="hero">
+
+<div class="navbar">
+    <div class="logo">Express API Actions Generator</div>
+
+    <div class="menu">
+        <span>get</span>
+        <span>insert</span>
+        <span>delete</span>
+        <span>alter</span>
+    </div>
+</div>
+
+<div class="hero-content">
+
+<div>
+    <div class="badge">SHOWALL ENDPOINT ARCHITECTURE</div>
+
+    <h1>
+        Generate <span class="gradient">ShowAll</span><br>
+        Endpoint Automatically
+    </h1>
+
+    <p>
+        The ShowAll action generates a complete Express.js GET endpoint architecture automatically.
+        It creates modular route structures, controller layers, service layers, endpoint registration,
+        and JSON data reading architecture using layered backend design.
+    </p>
+
+    <div class="btns">
+        <a href="#process" class="btn primary">Explore Process</a>
+        <a href="#architecture" class="btn secondary">View Architecture</a>
+    </div>
+</div>
+
+<div class="code-window">
+
+<div class="window-top">
+    <div class="dot red"></div>
+    <div class="dot yellow"></div>
+    <div class="dot green"></div>
+</div>
+
+<div class="window-body">
+<pre>
+STEP 3 — Generate journals Table Route
+
+Open:
+Api/V1/routes.js
+
+Click:
+AddTableName
+
+Enter:
+journals
+
+Generated:
+
+Api/V1/journals/
+
+Automatically created:
+
+Config/
+routes.js
+end-points.js
+</pre>
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<section>
+
+<div class="title">
+    <h2>Generated Commands</h2>
+    <p>
+        After clicking on end-points.js, the extension provides multiple CRUD action commands.
+        Each command generates a different Express API architecture automatically.
+    </p>
+</div>
+
+<div class="command-list">
+    <div>get</div>
+    <div>insert</div>
+    <div>delete</div>
+    <div>alter</div>
+</div>
+
+</section>
+
+<section class="process" id="process">
+
+<div class="title">
+    <h2>ShowAll Generation Process</h2>
+    <p>
+        When you click the get command, the ShowAll architecture is generated automatically.
+        The extension creates route files, controller layers, service layers, and endpoint registration.
+    </p>
+</div>
+
+<div class="flow">
+
+<div class="flow-box">
+    <h4>STEP 1</h4>
+    <p>
+        Open Api/V1/routes.js and create journals table route.
+    </p>
+</div>
+
+<div class="flow-box">
+    <h4>STEP 2</h4>
+    <p>
+        Click AddTableName and enter journals.
+    </p>
+</div>
+
+<div class="flow-box">
+    <h4>STEP 3</h4>
+    <p>
+        journals folder gets generated automatically.
+    </p>
+</div>
+
+<div class="flow-box">
+    <h4>STEP 4</h4>
+    <p>
+        Open end-points.js and click get command.
+    </p>
+</div>
+
+<div class="flow-box">
+    <h4>STEP 5</h4>
+    <p>
+        ShowAll architecture gets generated automatically.
+    </p>
+</div>
+
+<div class="flow-box">
+    <h4>STEP 6</h4>
+    <p>
+        Endpoint becomes available inside Express.js application.
+    </p>
+</div>
+
+</div>
+
+</section>
+
+<section id="architecture">
+
+<div class="title">
+    <h2>Generated ShowAll Architecture</h2>
+    <p>
+        The extension creates a modular Express.js backend structure using layered architecture.
+        Each layer has a specific responsibility.
+    </p>
+</div>
+
+<div class="architecture-box">
+
+<pre>
+Api/
+   V1/
+      journals/
+
+         Config/
+
+         ShowAll/
+            controller.js
+            service.js
+            errors.js
+
+         Insert/
+         Alter/
+         Delete/
+
+         end-points.js
+
+      routes.js
+
+routes.js
+</pre>
+
+</div>
+
+<div class="endpoint">
+GET http://localhost:3000/V1/journals/ShowAll
+</div>
+
+</section>
+
+<section>
+
+<div class="title">
+    <h2>ShowAll Endpoint Flow</h2>
+    <p>
+        The request moves through multiple Express.js backend layers before JSON data is returned.
+    </p>
+</div>
+
+<div class="flow">
+
+<div class="flow-box">
+    <h4>Browser</h4>
+    <p>User calls ShowAll endpoint.</p>
+</div>
+
+<div class="flow-box">
+    <h4>routes.js</h4>
+    <p>Main Express router receives request.</p>
+</div>
+
+<div class="flow-box">
+    <h4>end-points.js</h4>
+    <p>ShowAll endpoint gets executed.</p>
+</div>
+
+<div class="flow-box">
+    <h4>controller.js</h4>
+    <p>Handles request and response processing.</p>
+</div>
+
+<div class="flow-box">
+    <h4>service.js</h4>
+    <p>Reads journals JSON records.</p>
+</div>
+
+<div class="flow-box">
+    <h4>JSON Response</h4>
+    <p>Records returned back to browser.</p>
+</div>
+
+</div>
+
+</section>
+
+<section>
+
+<div class="title">
+    <h2>Generated Express Endpoint</h2>
+    <p>
+        The ShowAll action creates a GET endpoint automatically inside end-points.js.
+    </p>
+</div>
+
+<div class="code-window" style="max-width:850px;margin:auto;">
+<div class="window-top">
+    <div class="dot red"></div>
+    <div class="dot yellow"></div>
+    <div class="dot green"></div>
+</div>
+
+<div class="window-body">
+<pre>
+router.get('/ShowAll', (req, res) => {
+
+    getFunc({
+        res,
+        inTableName : 'journals'
+    });
+
+});
+</pre>
+</div>
+</div>
+
+</section>
+
+<section>
+
+<div class="title">
+    <h2>Why This Architecture?</h2>
+    <p>
+        The extension uses modular architecture for clean Express.js backend development.
+    </p>
+</div>
+
+<div class="cards">
+
+<div class="card">
+    <h3>Layered Backend</h3>
+    <p>
+        Separates routing, controller logic, service logic, and storage architecture.
+    </p>
+</div>
+
+<div class="card">
+    <h3>Automatic Generation</h3>
+    <p>
+        Generates endpoint structures instantly instead of manually writing repetitive Express code.
+    </p>
+</div>
+
+<div class="card">
+    <h3>Scalable APIs</h3>
+    <p>
+        Easy to create Insert, Delete, Alter, and ShowAll APIs using the same architecture.
+    </p>
+</div>
+
+<div class="card">
+    <h3>Clean Routing</h3>
+    <p>
+        Uses Express Router and modular route connection for better organization.
+    </p>
+</div>
+
+</div>
+
+</section>
+
+<footer>
+Express API Actions Generator • ShowAll Architecture • Node.js • Express.js • CRUD APIs
+</footer>
+
+</body>
+</html>
