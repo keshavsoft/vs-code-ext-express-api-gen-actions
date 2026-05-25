@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>ShowAll Endpoint Story</title>
+
+  <style>
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    body{
+      background:#031126;
+      color:#d6e2f0;
+      padding:40px;
+      line-height:1.8;
+    }
+
+    .container{
+      max-width:1200px;
+      margin:auto;
+    }
+
+    .badge{
+      display:inline-block;
+      padding:10px 22px;
+      border-radius:30px;
+      background:rgba(0,255,170,0.08);
+      border:1px solid rgba(0,255,170,0.2);
+      color:#6fffcf;
+      font-size:14px;
+      letter-spacing:1px;
+      margin-bottom:30px;
+    }
+
+    h1{
+      font-size:68px;
+      font-weight:700;
+      color:white;
+      margin-bottom:30px;
+      line-height:1.2;
+    }
+
+    h1 span{
+      color:#1fe6ff;
+    }
+
+    p{
+      font-size:22px;
+      margin-bottom:35px;
+      color:#aebfd4;
+    }
+
+    .story-section{
+      margin-top:50px;
+      padding:35px;
+      border-radius:20px;
+      background:rgba(255,255,255,0.03);
+      border:1px solid rgba(255,255,255,0.05);
+    }
+
+    .story-title{
+      font-size:34px;
+      color:#ffffff;
+      margin-bottom:20px;
+    }
+
+    .highlight{
+      color:#1fe6ff;
+      font-weight:bold;
+    }
+
+    .code-box{
+      background:#07192f;
+      border-left:5px solid #1fe6ff;
+      padding:20px;
+      border-radius:10px;
+      margin:25px 0;
+      overflow:auto;
+    }
+
+    pre{
+      color:#8fffe3;
+      font-size:18px;
+    }
+
+    ul{
+      margin-top:20px;
+      padding-left:25px;
+    }
+
+    li{
+      margin-bottom:12px;
+      font-size:20px;
+      color:#bfd0e3;
+    }
+
+    .footer-box{
+      margin-top:50px;
+      padding:30px;
+      border-radius:18px;
+      background:linear-gradient(
+        135deg,
+        rgba(0,255,170,0.08),
+        rgba(0,180,255,0.08)
+      );
+      border:1px solid rgba(0,255,170,0.15);
+    }
+
+    .footer-box h2{
+      color:white;
+      margin-bottom:15px;
+      font-size:36px;
+    }
+
+    .footer-box p{
+      margin-bottom:0;
+      color:#d2e3f3;
+    }
+
+    @media(max-width:768px){
+
+      body{
+        padding:20px;
+      }
+
+      h1{
+        font-size:42px;
+      }
+
+      p{
+        font-size:18px;
+      }
+
+      .story-title{
+        font-size:28px;
+      }
+
+      pre{
+        font-size:15px;
+      }
+
+    }
+
+  </style>
+</head>
+<body>
+
+  <div class="container">
+
+    <div class="badge">
+      EXPRESS API ACTIONS GENERATOR
+    </div>
+
+    <h1>
+      How <span>ShowAll</span> Endpoint Gets Generated
+    </h1>
+
+    <p>
+      Late at night, a developer opened a fresh Express boilerplate project in VS Code.
+      The project already had the basic server setup, routes, and backend architecture.
+      But something was still missing — the APIs were not fully structured yet.
+    </p>
+
+    <div class="story-section">
+
+      <div class="story-title">
+        Step 1 — Installing the Extension
+      </div>
+
+      <p>
+        The developer installed the
+        <span class="highlight">Express API Actions Generator</span>
+        extension and started building the backend architecture step by step.
+      </p>
+
+      <div class="code-box">
+<pre>
+Api/
+ └── v1/
+</pre>
+      </div>
+
+      <p>
+        First came the <span class="highlight">Api</span> folder,
+        then the <span class="highlight">v1</span> version structure,
+        followed by router configuration.
+      </p>
+
+    </div>
+
+    <div class="story-section">
+
+      <div class="story-title">
+        Step 2 — Creating the Journals Module
+      </div>
+
+      <p>
+        Inside the routes file, the developer clicked on
+        <span class="highlight">AddTableName</span>
+        and entered:
+      </p>
+
+      <div class="code-box">
+<pre>
+journals
+</pre>
+      </div>
+
+      <p>
+        Immediately, the extension generated the complete backend module automatically.
+      </p>
+
+      <div class="code-box">
+<pre>
+Api/
+ └── v1/
+      └── journals/
+           ├── controllers/
+           ├── services/
+           ├── routes/
+           ├── end-points.js
+           └── ...
+</pre>
+      </div>
+
+    </div>
+
+    <div class="story-section">
+
+      <div class="story-title">
+        Step 3 — The Need for ShowAll
+      </div>
+
+      <p>
+        Inside the data folder, many JSON files were stored.
+        The developer now needed a functionality that could:
+      </p>
+
+      <ul>
+        <li>Fetch all records from JSON files</li>
+        <li>Return all journal entries</li>
+        <li>Send the response through an API endpoint</li>
+      </ul>
+
+      <p>
+        This functionality was called:
+        <span class="highlight">ShowAll</span>
+      </p>
+
+    </div>
+
+    <div class="story-section">
+
+      <div class="story-title">
+        Step 4 — Opening end-points.js
+      </div>
+
+      <p>
+        The developer opened:
+      </p>
+
+      <div class="code-box">
+<pre>
+Api/v1/journals/end-points.js
+</pre>
+      </div>
+
+      <p>
+        At the top-right corner, a special menu appeared containing API commands.
+      </p>
+
+      <div class="code-box">
+<pre>
+GET
+POST
+PUT
+DELETE
+SHOWALL
+</pre>
+      </div>
+
+      <p>
+        The developer clicked on:
+        <span class="highlight">GET</span>
+      </p>
+
+    </div>
+
+    <div class="story-section">
+
+      <div class="story-title">
+        Step 5 — Automatic Generation
+      </div>
+
+      <p>
+        Within seconds, the extension automatically generated:
+      </p>
+
+      <ul>
+        <li>Route registration</li>
+        <li>Controller logic</li>
+        <li>Service methods</li>
+        <li>JSON response handling</li>
+        <li>Storage retrieval flow</li>
+      </ul>
+
+      <p>
+        The generated endpoint now had the power to retrieve all records from the data folder automatically.
+      </p>
+
+      <div class="code-box">
+<pre>
+GET /journals
+</pre>
+      </div>
+
+    </div>
+
+    <div class="footer-box">
+
+      <h2>
+        Final Result
+      </h2>
+
+      <p>
+        What once required manually writing routes, services,
+        controllers, and response handlers...
+        was now generated in just a few clicks using the
+        Express API Actions Generator extension.
+      </p>
+
+    </div>
+
+  </div>
+
+</body>
+</html>
