@@ -281,12 +281,14 @@ footer{
 How <span class="gradient">ShowAll</span>
 Endpoint Gets Generated
 </h1>
-
-<p>
-You are given a code architecture containing `Api`, `v1`, and `journals`. Now you want to add the **ShowAll** functionality, which is used to fetch all the data from the JSON files. To achieve this, open the `end-points.js` file inside the journals module. At the top-right corner of the file, you will see a menu containing different API generation commands. Click on the **Get** button, and the extension will automatically generate the complete ShowAll architecture. This includes routes, controllers, services, endpoint registration, and the complete JSON response flow required to retrieve all records from storage.
-
+<p>First, you have Express boilerplate code architecture that contains the basic server setup and project structure. After setting up the boilerplate, the next step is to install the **Express API Actions Generator** extension in VS Code. Once the extension is installed, you begin building the backend structure step by step. Using the extension commands, you first create the `Api` folder, then add the `v1` version structure, and configure the router setup. After completing the routing structure, you add the table name, such as `journals`, and the extension automatically starts generating the required backend architecture around it.
 </p>
-
+<br>
+<p>
+You generated a code architecture containing Api, v1, and journals. Now you want to add the ShowAll functionality, which is used to fetch all the data stored in the JSON files inside the data folder. Here, the question is: How do you add the ShowAll functionality? This is the step-by-step process you need to follow.
+</p>
+<br>
+<p>First, open the end-points.js file inside the journals module. At the top-right corner, you will see a menu containing different API generation commands.In that you will see the get command ,Click on the Get button, and the extension will automatically generate the complete ShowAll architecture, including routes, controllers, services, endpoint registration, and the JSON response flow required to retrieve all records from storage.</p>
 <div class="editor">
 
 <div class="editor-top">
