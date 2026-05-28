@@ -1,165 +1,201 @@
-# Express API Gen Actions
+# vs-code-ext-express-api-gen-actions 🚀
 
-A VS Code extension for generating modular Express.js CRUD API action structures automatically.
+AI-assisted Express API action generator extension for Visual Studio Code.
 
-Repository:
-
-[vs-code-ext-express-api-gen-actions Repository](https://github.com/keshavsoft/vs-code-ext-express-api-gen-actions?utm_source=chatgpt.com)
+Quickly create Express.js API methods like **GET**, **POST**, and **DELETE** directly from the VS Code Title Bar with a single click.
 
 ---
 
-# Features
+# ✨ Overview
 
-* Generate Express API actions automatically
-* Generate CRUD endpoint structure
-* Create modular backend architecture
-* Auto-create route files
-* Organized controller/service pattern
-* JSON-based backend support
-* Faster API development
-* Reduce boilerplate Express code
+**vs-code-ext-express-api-gen-actions** is a Visual Studio Code extension developed by **KeshavSoft** to simplify Express.js endpoint action generation.
+
+Instead of manually writing repetitive API methods, the extension automatically generates route handlers and boilerplate code directly inside your endpoint files.
 
 ---
 
-# Generated Folder Structure
+# 🎯 Main Purpose
 
-Example generated structure:
+This extension helps developers instantly create:
 
-```txt id="jlwm1"
-Api/
-   V1/
-      Journals/
+* GET methods
+* POST methods
+* DELETE methods
+* Route boilerplate
+* Express router structure
 
-         Alter/
-         Config/
-         Delete/
-         Insert/
-         ShowAll/
+directly from the **VS Code Title Bar actions menu**.
 
-         end-points.js
+---
 
-      routes.js
+# ⚡ Features
 
-routes.js
+✅ One-click GET method generation
+✅ One-click POST method generation
+✅ One-click DELETE method generation
+✅ Auto-generate Express route handlers
+✅ Works directly inside endpoint files
+✅ Faster backend API development
+✅ Clean Express.js architecture
+✅ Beginner-friendly workflow
+
+---
+
+# 🖼️ API Actions
+
+When opening an endpoint file, the following actions appear on the VS Code Title Bar:
+
+```bash id="n2x8pa"
+get
+post
+delete
+```
+
+Clicking any action automatically generates the selected API method inside the current file.
+
+---
+
+# 🚀 Generated GET Method Example
+
+```js id="m7q4jd"
+router.get("/", async (req, res) => {
+    res.json({
+        success: true,
+        message: "GET method generated"
+    });
+});
 ```
 
 ---
 
-# Folder Explanation
+# 🚀 Generated POST Method Example
 
-| Folder/File     | Purpose                   |
-| --------------- | ------------------------- |
-| `ShowAll`       | Read all records          |
-| `Insert`        | Insert new record         |
-| `Alter`         | Update existing record    |
-| `Delete`        | Delete record             |
-| `Config`        | API configuration         |
-| `end-points.js` | Defines Express endpoints |
-| `routes.js`     | Connects routers          |
-
----
-
-# CRUD Actions
-
-The extension generates CRUD API actions automatically.
-
-| Action    | HTTP Method | Purpose         |
-| --------- | ----------- | --------------- |
-| `ShowAll` | GET         | Read all data   |
-| `Insert`  | POST        | Create new data |
-| `Alter`   | PUT/PATCH   | Update data     |
-| `Delete`  | DELETE      | Remove data     |
+```js id="k8t2ye"
+router.post("/", async (req, res) => {
+    res.json({
+        success: true,
+        message: "POST method generated"
+    });
+});
+```
 
 ---
 
-# API Architecture
+# 🚀 Generated DELETE Method Example
 
-```txt id="’wini2"
-Browser / Frontend
-        ↓
-Endpoint
-        ↓
-routes.js
-        ↓
+```js id="v4m9ac"
+router.delete("/", async (req, res) => {
+    res.json({
+        success: true,
+        message: "DELETE method generated"
+    });
+});
+```
+
+---
+
+# 📁 Folder Structure
+
+```bash id="r9u3lk"
+vs-code-ext-express-api-gen-actions
+│
+├── .vscode
+├── archive
+├── Docs
+├── node_modules
+├── src
+├── test
+│
+├── extension.js
+├── package.json
+├── README.md
+├── READMEv1.md
+└── CHANGELOG.md
+```
+
+---
+
+# 🛠️ How It Works
+
+## Step 1
+
+Open any endpoint file.
+
+Example:
+
+```bash id="q7p2fd"
 end-points.js
-        ↓
-controller.js
-        ↓
-service.js
-        ↓
-JSON/File Storage
-```
-
-# Generated Endpoints
-
-Final endpoints become:
-
-```txt id="’wini6"
-GET    Api/V1/Journals/ShowAll
-POST   Api/V1/Journals/Insert
-PUT    Api/V1/Journals/Alter
-DELETE Api/V1/Journals/Delete
 ```
 
 ---
 
-# Example JSON Storage
+## Step 2
 
-## Data/Journals.json
+Use the VS Code Title Bar buttons:
 
-```json id="’wini11"
-[
-  {
-    "id": 1,
-    "title": "Daily Entry",
-    "amount": 500
-  },
-  {
-    "id": 2,
-    "title": "Office Expense",
-    "amount": 1200
-  }
-]
-# Benefits
-
-* Faster Express API creation
-* Clean architecture
-* Organized backend structure
-* Reusable API modules
-* Automatic route generation
-* Easier maintenance
-
----
-
-# Example Workflow
-
-## Generate Journals API
-
-Generated structure:
-
-```txt id="’wini14"
-Api/
-   V1/
-      Journals/
-         ShowAll/
-         Insert/
-         Alter/
-         Delete/
+```bash id="d5m8zs"
+get
+post
+delete
 ```
 
 ---
 
-# Technologies
+## Step 3
+
+The extension automatically injects the selected method into the current router file.
+
+---
+
+# 📄 Example Endpoint File
+
+```js id="x3t7wn"
+import express from "express";
+
+const router = express.Router();
+
+export { router };
+```
+
+After clicking action buttons, methods are automatically added to the file.
+
+---
+
+# 💡 Why Use This Extension?
+
+* Avoid repetitive API coding
+* Quickly generate Express actions
+* Improve backend productivity
+* Maintain clean route structure
+* Speed up CRUD API development
+
+---
+
+# 🧠 Built With
 
 * Node.js
 * Express.js
-* Express Router
-* JSON Storage
-* CRUD APIs
-* Modular Backend Architecture
+* JavaScript
+* VS Code Extension API
 
 ---
 
-# Repository
+# 📄 License
 
-[vs-code-ext-express-api-gen-actions GitHub Repository](https://github.com/keshavsoft/vs-code-ext-express-api-gen-actions?utm_source=chatgpt.com)
+MIT License
+
+---
+
+# 👨‍💻 Author
+
+Developed by **KeshavSoft**
+
+---
+
+# ⭐ Support
+
+If you like this project:
+
+* ⭐ Star the repository
+* 🍴 Fork the project
+* 🚀 Share with developers
