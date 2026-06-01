@@ -4,7 +4,7 @@
   "description": "express generate from endpoints file, with actions",
   "publisher": "KeshavSoft",
   "type": "module",
-  "version": "1.6.1",
+  "version": "1.7.1",
   "engines": {
     "vscode": "^1.116.0"
   },
@@ -77,6 +77,7 @@
     "@vscode/test-electron": "^2.5.2"
   },
   "dependencies": {
-    "@keshavsoft/kschema-cli": "^1.17.2"
+    "@keshavsoft/kschema-cli": "^1.17.2",
+    "kschema-fs-api-gen-actions": "^1.7.3"
   }
 }
