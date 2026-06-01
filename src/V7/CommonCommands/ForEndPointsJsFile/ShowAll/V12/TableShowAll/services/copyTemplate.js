@@ -1,7 +1,9 @@
-import fs from 'fs';
+import { showAll } from "kschema-fs-api-gen-actions";
 
-export function copyTemplate({ templatePath, targetPath }) {
-    fs.cpSync(templatePath, targetPath, {
-        recursive: true
+const copyTemplate = async ({ targetPath }) => {
+    await showAll({
+        toPath: targetPath
     });
-}
+};
+
+export default copyTemplate;
