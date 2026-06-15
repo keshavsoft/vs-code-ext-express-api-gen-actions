@@ -1,9 +1,8 @@
-import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
-import { copyTemplate } from '../services/copyTemplate.js';
-import { updateJsFile } from '../services/UpdateJsFile/start.js';
-// import { createHttpFile } from '../services/createHttpFile.js';
+
+import { withMail } from 'kschema-fs-api-gen-actions';
+
 import { openFileInEditor } from '../services/openFile.js';
 import { createHttpFile } from '../services/CreateHttpFile/start.js';
 
@@ -18,16 +17,18 @@ export async function runFeatureOrchestration({ context, inTableName }) {
         templatePath: fileURLToPath(new URL('../templates/Base', import.meta.url))
     };
 
-    // inside runFeatureOrchestration
-    copy({
-        templatePath: localContext.templatePath,
-        routeFilePath: localContext.routeFilePath,
-        endpointFolder: localContext.endpointFolder
-    });
+    await withMail({ toPath: context.targetPath });
 
-    updateJsFile({
-        appJsPath: localContext.appJsPath, endpoint
-    });
+    // inside runFeatureOrchestration
+    // copy({
+    //     templatePath: localContext.templatePath,
+    //     routeFilePath: localContext.routeFilePath,
+    //     endpointFolder: localContext.endpointFolder
+    // });
+
+    // updateJsFile({
+    //     appJsPath: localContext.appJsPath, endpoint
+    // });
 
     createHttpFile({
         inTargetPath: localContext.endpointFolder,
@@ -40,9 +41,3 @@ export async function runFeatureOrchestration({ context, inTableName }) {
 
     return { endpoint };
 };
-
-// change copy
-function copy({ templatePath, routeFilePath, endpointFolder }) {
-    if (!fs.existsSync(endpointFolder)) fs.mkdirSync(endpointFolder, { recursive: true });
-    copyTemplate({ templatePath, targetPath: routeFilePath });
-}

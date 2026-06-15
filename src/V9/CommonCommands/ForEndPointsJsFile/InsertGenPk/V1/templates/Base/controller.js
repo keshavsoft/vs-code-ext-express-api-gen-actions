@@ -1,13 +1,13 @@
-import { startFunc as Service } from "./Service/start.js";
+import { startFunc as Service } from "./service.js";
 import { ConflictError, StorageError } from "./errors.js";
 
-const postFunc = (req, res) => {
+const postFunc = async ({ req, res, inTableName }) => {
     try {
         const inRequestBody = req.body;
 
-        const message = Service({ inRequestBody });
+        const fromService = await Service({ inRequestBody, inTableName });
 
-        res.type("text/plain").send(String(message))
+        res.type("application/json").send(fromService);
     } catch (err) {
 
         if (err instanceof ConflictError)
