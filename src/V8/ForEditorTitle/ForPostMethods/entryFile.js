@@ -2,6 +2,7 @@ import * as vscode from 'vscode';
 
 import { DATA_SOURCE_STRATEGIES } from './dataSourceStrategies.js';
 import { insertCommand } from '../../CommonCommands/ForEndPointsJsFile/Insert/start.js';
+import withMailCommand from '../../CommonCommands/ForEndPointsJsFile/WithMail/start.js';
 
 export async function postRegisterCommend(context, uri) {
     uri = uri || vscode.window.activeTextEditor?.document?.uri;
@@ -27,6 +28,10 @@ async function handleStrategy({ strategy, context, uri }) {
             return insertCommand(context, uri);
         };
 
+        case "WithMail": {
+
+            return withMailCommand(context, uri);
+        };
         default:
             vscode.window.showErrorMessage("Unknown strategy");
     };

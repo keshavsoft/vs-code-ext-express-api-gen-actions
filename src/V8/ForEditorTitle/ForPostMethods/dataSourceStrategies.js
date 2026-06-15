@@ -11,5 +11,9 @@ export const DATA_SOURCE_STRATEGIES = [
     {
         id: "Filter",
         label: "Filter : get all matched records from table"
+    },
+    {
+        id: "WithMail",
+        label: "WithMail : gmail only",
     }
 ];
