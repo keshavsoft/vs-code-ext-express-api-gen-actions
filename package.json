@@ -4,7 +4,7 @@
   "description": "express generate from endpoints file, with actions",
   "publisher": "KeshavSoft",
   "type": "module",
-  "version": "1.10.1",
+  "version": "1.10.2",
   "engines": {
     "vscode": "^1.116.0"
   },
@@ -34,6 +34,10 @@
       {
         "command": "extension.editor.title.endpoints.get",
         "title": "get"
+      },
+      {
+        "command": "extension.split",
+        "title": "split"
       }
     ],
     "menus": {
@@ -57,6 +61,11 @@
         },
         {
           "command": "extension.editor.title.endpoints.get",
+          "when": "resourceFilename == end-points.js",
+          "group": "navigation@7"
+        },
+        {
+          "command": "extension.split",
           "when": "resourceFilename == end-points.js",
           "group": "navigation@7"
         }
