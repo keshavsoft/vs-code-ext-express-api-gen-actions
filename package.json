@@ -78,6 +78,7 @@
   },
   "dependencies": {
     "@keshavsoft/kschema-cli": "^1.17.2",
-    "kschema-fs-api-gen-actions": "^1.7.15"
+    "kschema-fs-api-gen-actions": "^1.7.15",
+    "kschema-fs-api-gen-post-actions": "^1.6.2"
   }
 }
