@@ -3,6 +3,7 @@ import fs from 'fs';
 import path from 'path';
 
 import { startOrchestration } from "../../CommonCommands/ForEndPointsJsFile/InsertGenPk/V2/orchestration/startOrchestration.js";
+import ShowAll from "../../CommonCommands/ForEndPointsJsFile/ShowAll/v13/orchestration/startOrchestration.js";
 
 const splitEditor = async (context, uri) => {
     const panel = vscode.window.createWebviewPanel(
@@ -18,6 +19,10 @@ const splitEditor = async (context, uri) => {
         (message) => {
             if (message.action === "InsertGenPk") {
                 startOrchestration({ uri });
+            };
+
+            if (message.action === "showAll") {
+                ShowAll({ uri });
             };
         }
     );
